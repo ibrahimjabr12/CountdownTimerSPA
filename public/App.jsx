@@ -87,6 +87,7 @@ class App extends React.Component {
              }
              this.start();
          }
+         //this is the function that responsable for swap between pause/resume button 
          playOrStop(){
             if(this.playStop){
                 return( <button style={{marginLeft:"3px",marginRight:"3px",width:"81%"}} id="Stop" type="button" className="btn btn-danger">Pause</button>)
@@ -95,6 +96,7 @@ class App extends React.Component {
                 return(<button style={{marginLeft:"3px",marginRight:"3px",width:"81%"}} id="Play" type="button" className="btn btn-success">Resume</button>)  
             }
          }
+         //this is the function that responsable for render the input to enter the min 
          itIsNotActiv(){
              return(<div style={{marginTop:"30px", maxWidth: "450px",minWidth: "285px" }} className="container input-group mb-3">
              <input type="number" min="0" className="form-control" onChange={()=> this.handleChange(event) } placeholder="(Min)" aria-label="()Min" aria-describedby="button-addon2"></input>
@@ -103,7 +105,7 @@ class App extends React.Component {
              </div>
          </div>)
          }
-
+         //this is the function that responsable for render the timer
          itIsActiv(){
             return(<div className='center' style={{marginTop:"15px", maxWidth: "350px",minWidth: "285px" }}>
                 {this.halfway()}
@@ -118,6 +120,7 @@ class App extends React.Component {
                  </div>
             </div>)
         }
+        //this is the function that responsable for render the More than halfway there! and Time’s up!
         halfway(){
             if(this.state.input == 1 && this.state.sec<=30 && this.state.sec != 0 && this.state.isActiv){
                 return(<h4 style={{width:"100%"}}>More than halfway there!</h4>)
@@ -131,6 +134,7 @@ class App extends React.Component {
                 return(<h4 style={{width:"100%"}}>Time’s up!</h4>)
             }
         }
+        //this is the function that responsable for render the More than red and blink red
         lessThan(){
             if(this.state.minets ===0 &&this.state.sec <=20 && this.state.sec >10){
                 return(<h1 style={{width:"100%", fontSize:"5em"}} className='red'>{this.state.minets<10?"0"+this.state.minets:this.state.minets}:{this.state.sec<10?"0"+this.state.sec:this.state.sec}</h1>)
