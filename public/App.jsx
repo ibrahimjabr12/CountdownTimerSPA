@@ -14,7 +14,7 @@ class App extends React.Component {
           }
     }
    
-    
+    //this is the function that responsable for calling the count down function
     start() {
         if(this.playStop){
             this.interval = setInterval(() => {
@@ -26,7 +26,7 @@ class App extends React.Component {
     handleChange(e) {
          this.setState({ input: e.target.value });
       }
-
+      //get the number, change it into m/s and call thestart function
       getNumber() {
           if(this.state.input<=0){
               alert("enter number bigger than 0")
@@ -43,7 +43,8 @@ class App extends React.Component {
           this.start();
           }
       }
-      
+          //this is the function that responsable for the count down
+
        timer(){
            
            if(this.state.sec != 0 || this.state.minets !=0){
@@ -61,6 +62,8 @@ class App extends React.Component {
            }
         
          }
+             //this is the function that responsable for changing the speed and pause/resume
+
          changeSpeed(e){
              
             clearInterval( this.interval );
@@ -86,10 +89,10 @@ class App extends React.Component {
          }
          playOrStop(){
             if(this.playStop){
-                return( <button style={{marginLeft:"3px",marginRight:"3px",width:"81%"}} id="Stop" type="button" className="btn btn-danger">Stop</button>)
+                return( <button style={{marginLeft:"3px",marginRight:"3px",width:"81%"}} id="Stop" type="button" className="btn btn-danger">Pause</button>)
 
             }else{
-                return(<button style={{marginLeft:"3px",marginRight:"3px",width:"81%"}} id="Play" type="button" className="btn btn-success">Play</button>)  
+                return(<button style={{marginLeft:"3px",marginRight:"3px",width:"81%"}} id="Play" type="button" className="btn btn-success">Resume</button>)  
             }
          }
          itIsNotActiv(){
@@ -131,12 +134,15 @@ class App extends React.Component {
         lessThan(){
             if(this.state.minets ===0 &&this.state.sec <=20 && this.state.sec >10){
                 return(<h1 style={{width:"100%", fontSize:"5em"}} className='red'>{this.state.minets<10?"0"+this.state.minets:this.state.minets}:{this.state.sec<10?"0"+this.state.sec:this.state.sec}</h1>)
-            }else if(this.state.minets ===0 && this.state.sec <=10){
+            }else if(this.state.minets ===0 && this.state.sec <=10 && this.state.sec >0){
                return(<h1 style={{width:"100%", fontSize:"5em"}} className='blink red'>{this.state.minets<10?"0"+this.state.minets:this.state.minets}:{this.state.sec<10?"0"+this.state.sec:this.state.sec}</h1>)
-           }else{
-               return(<h1 style={{width:"100%", fontSize:"5em"}}>{this.state.minets<10?"0"+this.state.minets:this.state.minets}:{this.state.sec<10?"0"+this.state.sec:this.state.sec}</h1>)
+           }else if(this.state.minets ===0 && this.state.sec ===0){
+               return(<h1 style={{width:"100%", fontSize:"5em"}} className='red'>{this.state.minets<10?"0"+this.state.minets:this.state.minets}:{this.state.sec<10?"0"+this.state.sec:this.state.sec}</h1>)
 
-           }
+           }else{
+            return(<h1 style={{width:"100%", fontSize:"5em"}}>{this.state.minets<10?"0"+this.state.minets:this.state.minets}:{this.state.sec<10?"0"+this.state.sec:this.state.sec}</h1>)
+
+        }
         }
     render(){
         
